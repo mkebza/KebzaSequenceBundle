@@ -20,6 +20,5 @@
   "autoload": {
     "psr-0": { "Kebza\\SequenceBundle": "" }
   },
-  "target-dir": "Kebza/SequenceBundle",
   "minimum-stability": "dev"
 }
