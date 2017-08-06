@@ -1,0 +1,25 @@
+{
+  "name": "kebza/sequence-bundle",
+  "type": "symfony-bundle",
+  "description": "Symfony2 bundle that provides abilty to create multiple sequences for invoice / user codes",
+  "keywords": ["symfony","bundle","sequence"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marek Kebza",
+      "email": "marek@kebza.cz"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.2",
+    "symfony/framework-bundle": ">=3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "3.7.*"
+  },
+  "autoload": {
+    "psr-0": { "Kebza\\SequenceBundle": "" }
+  },
+  "target-dir": "Kebza/SequenceBundle",
+  "minimum-stability": "dev"
+}

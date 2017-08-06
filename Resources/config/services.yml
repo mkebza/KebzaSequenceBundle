@@ -1,0 +1,48 @@
+services:
+    Kebza\SequenceBundle\Sequence\SequenceRegistry:
+        class: Kebza\SequenceBundle\Sequence\SequenceRegistry
+        arguments:
+            - "%kebza_sequence.sequences%"
+
+    Kebza\SequenceBundle\Sequence\Replacer\ReplacerRegistry:
+        class: Kebza\SequenceBundle\Sequence\Replacer\ReplacerRegistry
+
+    Kebza\SequenceBundle\Sequence\SequenceManager:
+        class: Kebza\SequenceBundle\Sequence\SequenceManager
+        public: true
+        arguments:
+            - "@Kebza\\SequenceBundle\\Sequence\\SequenceRegistry"
+            - "@Kebza\\SequenceBundle\\Sequence\\Replacer\\ReplacerRegistry"
+#            - "@Kebza\\SequenceBundle\\Sequence\\Storage\\DoctrineStorage" // Added from confiuration
+
+    # Storage
+    Kebza\SequenceBundle\Sequence\Storage\DoctrineStorage:
+        class: Kebza\SequenceBundle\Sequence\Storage\DoctrineStorage
+        arguments:
+            - "@doctrine.orm.entity_manager"
+
+    Kebza\SequenceBundle\Sequence\Storage\MemoryStorage:
+        class: Kebza\SequenceBundle\Sequence\Storage\MemoryStorage
+
+    Kebza\SequenceBundle\Sequence\Storage\FileStorage:
+        class: Kebza\SequenceBundle\Sequence\Storage\FileStorage
+        arguments:
+            - "%kernel.root_dir%/../var/sequences/"
+
+
+    # Replacers
+    Kebza\SequenceBundle\Sequence\Replacer\Type\ValueReplacer:
+        class: Kebza\SequenceBundle\Sequence\Replacer\Type\ValueReplacer
+        tags:
+            - { name: kebza.sequence.replacer }
+    Kebza\SequenceBundle\Sequence\Replacer\Type\DateReplacer:
+        class: Kebza\SequenceBundle\Sequence\Replacer\Type\DateReplacer
+        tags:
+            - { name: kebza.sequence.replacer }
+
+
+    # Aliases
+    kebza.sequence.manager:
+        alias: Kebza\SequenceBundle\Sequence\SequenceManager
+
+
